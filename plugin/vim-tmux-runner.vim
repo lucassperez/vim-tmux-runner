@@ -538,6 +538,14 @@ function! s:DefineCommands()
     command! -nargs=1 VtrSendKeysRaw call s:SendKeysRaw(<q-args>)
 endfunction
 
+function! g:VtrFnGetAttachedPane()
+  " I'd love to make this a command, but I don't know how to
+  " command! VtrGetAttachedPane call s:GetAttachedPane()
+  " This doesn't really work because it returns nothing
+  " If returns -1, it doesn't exist
+  return get(s:, 'runner_pane', -1)
+endfunction
+
 function! s:DefineKeymaps()
     if g:VtrUseVtrMaps
         nnoremap <leader>va :VtrAttachToPane<cr>
